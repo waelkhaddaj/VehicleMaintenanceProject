@@ -1,0 +1,201 @@
+/* HERO SECTION */
+.hero {
+  background-size: cover;
+  background-position: center;
+  padding: 100px 50px;
+  text-align: left;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin: 15px 0;
+}
+
+.hero .btn {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn.yellow {
+  background-color: #f8c22e;
+  color: #000;
+}
+
+.btn.outline {
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+/* BOOKING SECTION */
+.booking {
+  background-color: #1b1b1b;
+  padding: 30px 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.booking form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.booking input,
+.booking select {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.booking button {
+  background-color: #f8c22e;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* WHY CHOOSE US */
+.why-choose-us {
+  background-color: #0e0e0e;
+  padding: 80px 50px;
+  text-align: center;
+}
+
+.why-choose-us h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.why-choose-us p {
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.feature-box {
+  background-color: #1a1a1a;
+  padding: 30px 20px;
+  border-radius: 12px;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(248, 194, 46, 0.2);
+}
+
+.feature-box h3 {
+  color: #f8c22e;
+  margin-bottom: 10px;
+}
+
+.feature-box p {
+  color: #bbb;
+}
+
+/* PRECISION SECTION */
+.precision {
+  position: relative;
+  text-align: center;
+  padding: 120px 20px;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.precision::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+.precision h2 {
+  color: #f8c22e;
+  margin-bottom: 15px;
+}
+
+.precision p {
+  font-size: 1.1em;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* BLOG PREVIEW */
+.blog {
+  background-color: #0e0e0e;
+  padding: 80px 50px;
+  text-align: center;
+}
+
+.blog h2 {
+  color: #f8c22e;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.blog-intro {
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+.blog-posts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.post {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(248, 194, 46, 0.2);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #111;
+  font-size: 0.9em;
+}

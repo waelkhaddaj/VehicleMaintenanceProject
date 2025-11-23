@@ -1,0 +1,158 @@
+/* HERO BANNER */
+.repair-hero {
+  text-align: center;
+  padding: 120px 40px;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.repair-hero h1 {
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.repair-hero p {
+  color: #ccc;
+  font-size: 1.2em;
+}
+
+/* MAIN SECTION */
+.repair-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  padding: 100px 80px;
+  background-color: #0e0e0e;
+}
+
+.repair-section .text {
+  flex: 1 1 50%;
+  color: #fff;
+}
+
+.repair-section .text h2 {
+  font-size: 2.4em;
+  font-weight: bold;
+  color: #f8c22e;
+  margin-bottom: 20px;
+}
+
+.repair-section .text p {
+  color: #ccc;
+  font-size: 1.1em;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  max-width: 550px;
+}
+
+.repair-section .text ul {
+  list-style: none;
+  margin-top: 20px;
+  color: #f8c22e;
+  font-size: 1.05em;
+  line-height: 2;
+}
+
+.repair-section .image-container {
+  flex: 1 1 45%;
+  display: flex;
+  justify-content: center;
+}
+
+.repair-section img {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 0 40px rgba(248, 194, 46, 0.15);
+  transition: transform 0.4s ease;
+}
+
+.repair-section img:hover {
+  transform: scale(1.02);
+}
+
+/* BEFORE & AFTER */
+.before-after {
+  text-align: center;
+  padding: 100px 50px;
+  background-color: #0e0e0e;
+}
+
+.before-after h2 {
+  color: #f8c22e;
+  margin-bottom: 10px;
+}
+
+.before-after p {
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+.before-after-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.before-after-images img {
+  width: 45%;
+  max-width: 500px;
+  border-radius: 12px;
+  transition: all 0.6s ease;
+  filter: brightness(0.85);
+}
+
+.before-after-images img:hover {
+  transform: scale(1.05);
+  filter: brightness(1);
+  box-shadow: 0 0 25px rgba(248, 194, 46, 0.3);
+}
+
+/* PRECISION PARALLAX */
+.precision {
+  position: relative;
+  text-align: center;
+  padding: 120px 20px;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+  z-index: 1;
+}
+
+.precision::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+.precision h2 {
+  color: #f8c22e;
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+.precision p {
+  font-size: 1.1em;
+  color: #ddd;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #111;
+  font-size: 0.9em;
+}
