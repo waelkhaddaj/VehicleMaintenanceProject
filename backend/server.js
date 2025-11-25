@@ -12,10 +12,12 @@ app.use(express.json());
 // DB connection
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
+  port: process.env.DB_PORT, 
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
-  database: process.env.DB_NAME
+  database: process.env.DB_NAME,
 });
+
 
 // -------------------- TEST DB --------------------
 app.get("/test-db", (req, res) => {
