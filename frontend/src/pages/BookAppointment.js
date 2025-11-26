@@ -1,5 +1,5 @@
-// src/pages/BookAppointment.js
 import { useState } from "react";
+import "./BookAppointment.css";
 
 export default function BookAppointment() {
   const [service, setService] = useState("");
@@ -7,6 +7,8 @@ export default function BookAppointment() {
   const [date, setDate] = useState("");
 
   const userId = localStorage.getItem("userId");
+
+  const heroBg = process.env.PUBLIC_URL + "/images/garage-team.jpg";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,34 +34,55 @@ export default function BookAppointment() {
   };
 
   return (
-    <div style={{ padding: "40px", minHeight: "100vh", backgroundColor: "#111", color: "white" }}>
-      <h1>Book Appointment</h1>
+    <div className="book-page">
+      
+      {/* HERO */}
+      <section
+        className="book-hero"
+        style={{
+          backgroundImage: `linear-gradient(
+            rgba(0,0,0,0.5),
+            rgba(0,0,0,0.7)
+          ), url(${heroBg})`,
+        }}
+      >
+        <h1>Book Your Appointment</h1>
+        <p>Fast, simple, and hassle-free scheduling.</p>
+      </section>
 
-      <form onSubmit={handleSubmit} style={{ maxWidth: "500px" }}>
-        <label>Service Type</label>
-        <input value={service} onChange={(e) => setService(e.target.value)} required />
+      {/* FORM */}
+      <div className="book-container">
+        <form onSubmit={handleSubmit}>
+          
+          <label>Service Type</label>
+          <input 
+            value={service} 
+            onChange={(e) => setService(e.target.value)} 
+            required 
+          />
 
-        <label>Location</label>
-        <input value={location} onChange={(e) => setLocation(e.target.value)} required />
+          <label>Location</label>
+          <input 
+            value={location} 
+            onChange={(e) => setLocation(e.target.value)} 
+            required 
+          />
 
-        <label>Date</label>
-        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+          <label>Date</label>
+          <input 
+            type="date" 
+            value={date} 
+            onChange={(e) => setDate(e.target.value)} 
+            required 
+          />
 
-        <button
-          type="submit"
-          style={{
-            marginTop: "20px",
-            padding: "10px 20px",
-            backgroundColor: "#f8c22e",
-            border: "none",
-            cursor: "pointer",
-            borderRadius: "5px",
-            fontWeight: "bold",
-          }}
-        >
-          Book Now
-        </button>
-      </form>
+          <button type="submit" className="book-btn">
+            Book Now
+          </button>
+
+        </form>
+      </div>
+
     </div>
   );
 }

@@ -10,6 +10,8 @@ import Blog from "./pages/Blog";
 import BookAppointment from "./pages/BookAppointment";
 import MyAppointments from "./pages/MyAppointments";
 
+import BackToTop from "./components/BackToTop"; // ⭐ ADD THIS IMPORT
+
 function App() {
   return (
     <Router>
@@ -26,6 +28,8 @@ function App() {
         <Route path="/book" element={<BookAppointment />} />
         <Route path="/my-appointments" element={<MyAppointments />} />
       </Routes>
+
+      <BackToTop /> {/* ⭐ ADD THIS COMPONENT HERE */}
     </Router>
   );
 }

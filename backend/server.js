@@ -9,20 +9,20 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// DB connection
+// -------------------- DB CONNECTION --------------------
 const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT, 
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
+  host: process.env.MYSQLHOST,
+  port: process.env.MYSQLPORT,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
 });
-
 
 // -------------------- TEST DB --------------------
 app.get("/test-db", (req, res) => {
   db.query("SELECT 1", (err, result) => {
-    if (err) return res.status(500).json({ error: "DB test failed", details: err });
+    if (err)
+      return res.status(500).json({ error: "DB test failed", details: err });
     res.json({ message: "Database connection works!", result });
   });
 });
@@ -30,7 +30,8 @@ app.get("/test-db", (req, res) => {
 // -------------------- SERVICES --------------------
 app.get("/api/services", (req, res) => {
   db.query("SELECT * FROM services", (err, results) => {
-    if (err) return res.status(500).json({ error: "Failed to fetch services" });
+    if (err)
+      return res.status(500).json({ error: "Failed to fetch services" });
     res.json(results);
   });
 });
@@ -38,10 +39,19 @@ app.get("/api/services", (req, res) => {
 // -------------------- REGISTER --------------------
 app.post("/api/register", (req, res) => {
   const { name, email, password, phone, car_model } = req.body;
-  const sql = "INSERT INTO users (name, email, password, phone, car_model) VALUES (?, ?, ?, ?, ?)";
+
+  if (!name || !email || !password || !phone || !car_model) {
+    return res.status(400).json({ error: "Missing fields" });
+  }
+
+  const sql =
+    "INSERT INTO users (name, email, password, phone, car_model) VALUES (?, ?, ?, ?, ?)";
 
   db.query(sql, [name, email, password, phone, car_model], (err, result) => {
-    if (err) return res.status(500).json({ error: "Registration failed", details: err });
+    if (err)
+      return res
+        .status(500)
+        .json({ error: "Registration failed", details: err });
     res.json({ message: "User registered successfully", userId: result.insertId });
   });
 });
@@ -56,15 +66,16 @@ app.post("/api/login", (req, res) => {
     (err, results) => {
       if (err) return res.status(500).json({ error: "Login failed" });
 
-      if (results.length === 0) return res.status(401).json({ message: "Invalid email or password" });
+      if (results.length === 0)
+        return res.status(401).json({ message: "Invalid email or password" });
 
       res.json({
         message: "Login successful",
         user: {
           id: results[0].id,
           name: results[0].name,
-          car_model: results[0].car_model
-        }
+          car_model: results[0].car_model,
+        },
       });
     }
   );
@@ -76,12 +87,13 @@ app.post("/api/contact", (req, res) => {
   const sql = "INSERT INTO messages (name, email, message) VALUES (?, ?, ?)";
 
   db.query(sql, [name, email, message], (err, result) => {
-    if (err) return res.status(500).json({ error: "Failed to submit message" });
+    if (err)
+      return res.status(500).json({ error: "Failed to submit message" });
     res.json({ message: "Message sent successfully!", messageId: result.insertId });
   });
 });
 
-// -------------------- BOOK APPOINTMENT (MATCHES YOUR DB) --------------------
+// -------------------- BOOK APPOINTMENT --------------------
 app.post("/api/book", (req, res) => {
   const { user_id, service_type, location, date } = req.body;
 

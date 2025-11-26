@@ -1,63 +1,70 @@
 import "./Services.css";
 
 export default function Services() {
+  const heroBg = process.env.PUBLIC_URL + "/images/service-hero.jpg";
+
+  const imgOil = process.env.PUBLIC_URL + "/images/Oil Change & Maintenance.png";
+  const imgBrake = process.env.PUBLIC_URL + "/images/Brake Inspection & Repair.png";
+  const imgEngine = process.env.PUBLIC_URL + "/images/Engine Diagnostics.png";
+  const imgAlignment = process.env.PUBLIC_URL + "/images/tire-wheel.png";
+  const imgAC = process.env.PUBLIC_URL + "/images/tire-wheel.png";
+  const imgDetailing = process.env.PUBLIC_URL + "/images/Air Conditioning Service.png";
+
   return (
     <div>
 
-      {/* HERO SECTION */}
-      <section
-        className="services-hero"
-        style={{
-          backgroundImage: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('/images/service-hero.jpg')",
-        }}
-      >
-        <div className="hero-content">
-          <h1>Our Services</h1>
-          <p className="subtitle">Premium care for every vehicle.</p>
-        </div>
+      {/* TOP TITLE SECTION (MATCHES YOUR DESIGN) */}
+      <section className="top-title-section">
+        <p className="top-label">— WHAT WE OFFER</p>
+        <h1 className="main-title">Our Vehicle Services</h1>
+        <p className="subtitle">
+          From diagnostics to detailing, DriveLab provides expert care for every part of your car.
+        </p>
       </section>
 
-      {/* SERVICES GRID */}
+      {/* CORE SERVICES SECTION */}
       <section className="services-section">
-        <h2>What We Offer</h2>
-        <p className="intro">High-quality car maintenance and repair solutions.</p>
+        <h2>Our Core Services</h2>
+        <p className="intro">
+          We deliver premium car care with reliability, safety, and professional attention to every customer.
+        </p>
 
         <div className="service-grid">
 
           <div className="service-card">
-            <img src="/images/Oil Change & Maintenance.png" alt="" />
-            <h3>Oil Change</h3>
-            <p>Keep your engine healthy with premium oil and filters.</p>
+            <img src={imgOil} alt="Oil Change" />
+            <h3>Oil Change & Maintenance</h3>
+            <p>Keep your engine running smoothly with top-grade oils and expert service.</p>
           </div>
 
           <div className="service-card">
-            <img src="/images/Engine Diagnostics.png" alt="" />
+            <img src={imgBrake} alt="Brake Repair" />
+            <h3>Brake Inspection & Repair</h3>
+            <p>Ensure your safety with precision brake diagnostics, pad replacements, and repairs.</p>
+          </div>
+
+          <div className="service-card">
+            <img src={imgEngine} alt="Engine Diagnostics" />
             <h3>Engine Diagnostics</h3>
-            <p>Advanced diagnostics to detect and fix engine issues early.</p>
+            <p>Advanced tools to quickly identify and fix engine issues efficiently.</p>
           </div>
 
           <div className="service-card">
-            <img src="/images/Tire & Wheel Alignment.png" alt="" />
+            <img src={imgAlignment} alt="Tire Alignment" />
             <h3>Tire & Wheel Alignment</h3>
-            <p>Increase safety and performance with perfect wheel alignment.</p>
+            <p>Improve handling, extend tire life, and ensure a smooth, safe driving experience.</p>
           </div>
 
           <div className="service-card">
-            <img src="/images/Brake Inspection & Repair.png" alt="" />
-            <h3>Brake Check & Repair</h3>
-            <p>Your safety first — full brake inspection and replacement.</p>
+            <img src={imgAC} alt="AC Service" />
+            <h3>Air Conditioning Service</h3>
+            <p>Stay comfortable with complete AC inspection, recharging, and repair.</p>
           </div>
 
           <div className="service-card">
-            <img src="/images/Air Conditioning Service.png" alt="" />
-            <h3>AC Service</h3>
-            <p>Stay cool with complete air conditioning servicing.</p>
-          </div>
-
-          <div className="service-card">
-            <img src="/images/regularmaintenance.jpg" alt="" />
-            <h3>General Maintenance</h3>
-            <p>Everything your vehicle needs for long-term reliability.</p>
+            <img src={imgDetailing} alt="Car Detailing" />
+            <h3>Full Car Detailing</h3>
+            <p>Bring back your car’s shine inside and out with our detailing professionals.</p>
           </div>
 
         </div>
@@ -65,9 +72,8 @@ export default function Services() {
 
       {/* FOOTER */}
       <footer>
-        <p>&copy; 2025 DriveLab. All rights reserved.</p>
+        <p>© 2025 DriveLab. All rights reserved.</p>
       </footer>
-
     </div>
   );
 }

@@ -156,3 +156,54 @@ footer {
   background-color: #111;
   font-size: 0.9em;
 }
+/* PROCESS SECTION */
+.process-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.feature-box {
+  background-color: #1a1a1a;
+  padding: 25px;
+  width: 260px;
+  border-radius: 12px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(248, 194, 46, 0.15);
+}
+
+.feature-box h3 {
+  color: #f8c22e;
+  margin-bottom: 10px;
+}
+
+.feature-box p {
+  color: #ccc;
+  font-size: 0.95em;
+}
+
+/* BEFORE-AFTER IMAGE SWAP */
+.before-after-images img {
+  width: 450px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+/* GUARANTEE SECTION */
+.guarantee-section {
+  padding: 80px 50px;
+  background-color: #0f0f0f;
+}
+
+.parallax {
+  background-size: cover;
+  background-position: center;
+}

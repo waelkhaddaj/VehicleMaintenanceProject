@@ -1,6 +1,8 @@
 import "./Contact.css";
 
 export default function Contact() {
+  const heroImg = process.env.PUBLIC_URL + "/images/contact-bg.jpg";
+
   return (
     <div>
 
@@ -8,14 +10,17 @@ export default function Contact() {
       <section
         className="contact-hero"
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('/images/contact-bg.jpg')",
+          backgroundImage: `linear-gradient(
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.65)
+          ), url(${heroImg})`,
         }}
       >
-        <div className="hero-content">
-          <h1>Contact Us</h1>
-          <p className="subtitle">We’re here to help — get in touch anytime.</p>
-        </div>
+        <div class="hero-content">
+        <p class="tagline">— GET IN TOUCH</p>
+        <h1>Contact DriveLab</h1>
+        <p class="subtitle">Whether you need expert car care, advice, or a quick service booking — we’re here to help.</p>
+      </div>
       </section>
 
       {/* CONTACT SECTION */}
@@ -48,10 +53,41 @@ export default function Contact() {
           <div className="contact-form-box">
             <h2>Send a Message</h2>
 
-            <form>
-              <input type="text" placeholder="Full Name" required />
-              <input type="email" placeholder="Email Address" required />
-              <textarea placeholder="Your Message" rows="5" required></textarea>
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+
+                const formData = new FormData(e.target);
+                const name = formData.get("name");
+                const email = formData.get("email");
+                const message = formData.get("message");
+
+                try {
+                  const res = await fetch("http://localhost:3001/api/contact", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, email, message }),
+                  });
+
+                  const data = await res.json();
+
+                  if (!res.ok) {
+                    alert(data.error || "Failed to send message");
+                    return;
+                  }
+
+                  alert("Message sent successfully!");
+                  e.target.reset();
+
+                } catch (err) {
+                  console.error(err);
+                  alert("Network error. Make sure backend is running.");
+                }
+              }}
+            >
+              <input name="name" type="text" placeholder="Full Name" required />
+              <input name="email" type="email" placeholder="Email Address" required />
+              <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
               <button type="submit">Send Message</button>
             </form>
           </div>

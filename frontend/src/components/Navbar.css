@@ -3,9 +3,10 @@
   justify-content: space-between;
   align-items: center;
   background-color: #111;
-  padding: 15px 50px;
+  padding: 10px 50px;
 }
 
+/* LOGO */
 .logo {
   font-size: 1.5em;
   font-weight: bold;
@@ -16,6 +17,7 @@
   color: #f8c22e;
 }
 
+/* NAV LINKS */
 .nav-links {
   list-style: none;
   display: flex;
@@ -26,13 +28,46 @@
   color: #fff;
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.2s ease;
 }
 
-.nav-links a:hover {
+/* Hover + active */
+.nav-links a:hover,
+.nav-links a.active {
   color: #f8c22e;
 }
 
+/* RIGHT SIDE (help + icon) */
+.right-side {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* space between help and icon */
+}
+
+/* HELP TEXT */
 .contact-info {
   text-align: right;
   font-size: 0.9em;
+  color: white;
+  line-height: 1.2;
+}
+
+/* LOGIN ICON */
+.login-icon img {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.login-icon img:hover {
+  filter: brightness(70%);
+}
+
+/* When active (user inside login page) */
+.login-icon.active img {
+  filter: brightness(60%) sepia(1) hue-rotate(10deg) saturate(4);
+}
+.nav-user-area{
+  color:white;
 }

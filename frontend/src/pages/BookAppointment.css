@@ -1,0 +1,71 @@
+.book-page {
+  background-color: #0e0e0e;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+/* HERO FIXED — NO IMAGE INSIDE CSS  */
+.book-hero {
+  text-align: center;
+  padding: 80px 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Titles */
+.book-hero h1 {
+  color: #f8c22e;
+  font-size: 2.5rem;
+}
+
+.book-hero p {
+  color: #ccc;
+  margin-top: 10px;
+}
+
+/* FORM CONTAINER */
+.book-container {
+  max-width: 500px;
+  background: #1a1a1a;
+  margin: 40px auto;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(248, 194, 46, 0.15);
+}
+
+.book-container label {
+  color: #f8c22e;
+  font-weight: bold;
+}
+
+.book-container input,
+.book-container select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0 25px;
+  background-color: #111;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: white;
+}
+
+.book-container input:focus,
+.book-container select:focus {
+  border-color: #f8c22e;
+}
+
+/* BUTTON */
+.book-btn {
+  width: 100%;
+  padding: 12px;
+  background: #f8c22e;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s;
+}
+
+.book-btn:hover {
+  background: #ffdd6e;
+}

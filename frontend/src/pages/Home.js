@@ -1,4 +1,11 @@
 import "./Home.css";
+import { Link } from "react-router-dom";
+
+const heroBg = process.env.PUBLIC_URL + "/images/garagepicforhome.jpg";
+const precisionBg = process.env.PUBLIC_URL + "/images/precision-bg.jpg";
+const engineImg = process.env.PUBLIC_URL + "/images/engine.jpg";
+const garageTeamImg = process.env.PUBLIC_URL + "/images/garage-team.jpg";
+const toolsImg = process.env.PUBLIC_URL + "/images/tools.jpg";
 
 export default function Home() {
   return (
@@ -7,21 +14,27 @@ export default function Home() {
       <section
         className="hero"
         style={{
-          backgroundImage: "url('/images/garagepicforhome.jpg')",
+          backgroundImage: `url(${heroBg})`,
         }}
       >
         <div className="hero-content">
           <p className="tagline">— PREMIUM</p>
           <h1>Vehicle Repair</h1>
-          <p className="subtitle">Professional service for every car and every customer.</p>
+          <p className="subtitle">
+            Professional service for every car and every customer.
+          </p>
           <p>
-            Experience premium auto care—comfort, clarity, and affordability—perfect for routine
-            maintenance, diagnostics, or urgent repair work.
+            Experience premium auto care—comfort, clarity, and affordability—perfect
+            for routine maintenance, diagnostics, or urgent repair work.
           </p>
 
           <div className="hero-buttons">
-            <a href="/services" className="btn yellow">View Services</a>
-            <a href="/book" className="btn outline">Book Now</a>
+            <Link to="/services" className="btn yellow">
+              View Services
+            </Link>
+            <Link to="/book" className="btn outline">
+              Book Now
+            </Link>
           </div>
         </div>
       </section>
@@ -70,7 +83,12 @@ export default function Home() {
             <option value="engine">Engine Diagnostic</option>
           </select>
 
-          <input name="location" type="text" placeholder="Drop-off Location" required />
+          <input
+            name="location"
+            type="text"
+            placeholder="Drop-off Location"
+            required
+          />
           <input name="date" type="date" required />
 
           <button type="submit" className="btn yellow">
@@ -113,7 +131,7 @@ export default function Home() {
       <section
         className="precision"
         style={{
-          backgroundImage: "url('/images/precision-bg.jpg')",
+          backgroundImage: `url(${precisionBg})`,
         }}
       >
         <h2>Where Precision Meets Passion</h2>
@@ -128,17 +146,17 @@ export default function Home() {
 
           <div className="blog-posts">
             <div className="post">
-              <img src="/images/engine.jpg" alt="" />
+              <img src={engineImg} alt="Engine" />
               <h3>5 Warning Signs Your Car Needs Service</h3>
             </div>
 
             <div className="post">
-              <img src="/images/garage-team.jpg" alt="" />
+              <img src={garageTeamImg} alt="Garage team" />
               <h3>Why Maintenance Saves Money</h3>
             </div>
 
             <div className="post">
-              <img src="/images/tools.jpg" alt="" />
+              <img src={toolsImg} alt="Tools" />
               <h3>Top 5 Tips to Extend Tire Life</h3>
             </div>
           </div>
