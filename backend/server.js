@@ -10,12 +10,15 @@ app.use(cors());
 app.use(express.json());
 
 // -------------------- DB CONNECTION --------------------
-const db = mysql.createConnection({
+const db = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  port: process.env.DB_PORT
+  port: process.env.DB_PORT,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
 });
 
 
@@ -53,7 +56,11 @@ app.post("/api/register", (req, res) => {
       return res
         .status(500)
         .json({ error: "Registration failed", details: err });
-    res.json({ message: "User registered successfully", userId: result.insertId });
+
+    res.json({
+      message: "User registered successfully",
+      userId: result.insertId,
+    });
   });
 });
 
@@ -90,7 +97,10 @@ app.post("/api/contact", (req, res) => {
   db.query(sql, [name, email, message], (err, result) => {
     if (err)
       return res.status(500).json({ error: "Failed to submit message" });
-    res.json({ message: "Message sent successfully!", messageId: result.insertId });
+    res.json({
+      message: "Message sent successfully!",
+      messageId: result.insertId,
+    });
   });
 });
 
@@ -108,7 +118,8 @@ app.post("/api/book", (req, res) => {
   `;
 
   db.query(sql, [user_id, service_type, location, date], (err, result) => {
-    if (err) return res.status(500).json({ error: "Database error", details: err });
+    if (err)
+      return res.status(500).json({ error: "Database error", details: err });
     res.json({ message: "Appointment booked!" });
   });
 });
@@ -132,6 +143,7 @@ app.get("/api/appointments", (req, res) => {
 
 // -------------------- START SERVER --------------------
 const PORT = process.env.PORT || 3001;
+
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./BookAppointment.css";
+import { API_URL } from "../config";
 
 export default function BookAppointment() {
   const [service, setService] = useState("");
@@ -7,7 +8,6 @@ export default function BookAppointment() {
   const [date, setDate] = useState("");
 
   const userId = localStorage.getItem("userId");
-
   const heroBg = process.env.PUBLIC_URL + "/images/garage-team.jpg";
 
   const handleSubmit = async (e) => {
@@ -18,7 +18,7 @@ export default function BookAppointment() {
       return;
     }
 
-    const res = await fetch("http://localhost:3001/api/book", {
+    const res = await fetch(`${API_URL}/api/book`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -35,8 +35,7 @@ export default function BookAppointment() {
 
   return (
     <div className="book-page">
-      
-      {/* HERO */}
+
       <section
         className="book-hero"
         style={{
@@ -50,36 +49,18 @@ export default function BookAppointment() {
         <p>Fast, simple, and hassle-free scheduling.</p>
       </section>
 
-      {/* FORM */}
       <div className="book-container">
         <form onSubmit={handleSubmit}>
-          
           <label>Service Type</label>
-          <input 
-            value={service} 
-            onChange={(e) => setService(e.target.value)} 
-            required 
-          />
+          <input value={service} onChange={(e) => setService(e.target.value)} required />
 
           <label>Location</label>
-          <input 
-            value={location} 
-            onChange={(e) => setLocation(e.target.value)} 
-            required 
-          />
+          <input value={location} onChange={(e) => setLocation(e.target.value)} required />
 
           <label>Date</label>
-          <input 
-            type="date" 
-            value={date} 
-            onChange={(e) => setDate(e.target.value)} 
-            required 
-          />
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
 
-          <button type="submit" className="book-btn">
-            Book Now
-          </button>
-
+          <button type="submit" className="book-btn">Book Now</button>
         </form>
       </div>
 

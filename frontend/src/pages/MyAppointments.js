@@ -1,5 +1,5 @@
-// src/pages/MyAppointments.js
 import { useEffect, useState } from "react";
+import { API_URL } from "../config";
 
 export default function MyAppointments() {
   const [appointments, setAppointments] = useState([]);
@@ -8,10 +8,9 @@ export default function MyAppointments() {
     const userId = localStorage.getItem("userId");
     if (!userId) return;
 
-    fetch(`http://localhost:3001/api/appointments?user_id=${userId}`)
+    fetch(`${API_URL}/api/appointments?user_id=${userId}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log("Received:", data);
         setAppointments(data);
       })
       .catch((err) => console.error(err));

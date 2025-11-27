@@ -1,8 +1,9 @@
 import { useState } from "react";
 import "./Login.css";
+import { API_URL } from "../config";
 
 export default function Login() {
-  const [mode, setMode] = useState("login"); // "login" or "signup"
+  const [mode, setMode] = useState("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -10,11 +11,9 @@ export default function Login() {
   const [carModel, setCarModel] = useState("");
   const [message, setMessage] = useState("");
 
-  // 👉 CHECK: is someone already logged in?
   const loggedUserName = localStorage.getItem("userName");
 
   if (loggedUserName) {
-    // 👉 If yes, DON'T show login/signup form
     return (
       <div className="login-page">
         <section className="login-hero">
@@ -26,7 +25,6 @@ export default function Login() {
           <button
             className="login-btn"
             onClick={() => {
-              // 👉 Logout: remove saved user and reload
               localStorage.clear();
               window.location.href = "/login";
             }}
@@ -38,12 +36,11 @@ export default function Login() {
     );
   }
 
-  // -------------------- LOGIN --------------------
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:3001/api/login", {
+      const res = await fetch(`${API_URL}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -52,7 +49,6 @@ export default function Login() {
       const data = await res.json();
 
       if (res.ok && data.user) {
-        // 👉 SAVE USER DATA
         localStorage.setItem("userId", data.user.id);
         localStorage.setItem("userName", data.user.name);
 
@@ -66,12 +62,11 @@ export default function Login() {
     }
   };
 
-  // -------------------- SIGNUP --------------------
   const handleSignup = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:3001/api/register", {
+      const res = await fetch(`${API_URL}/api/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -98,117 +93,52 @@ export default function Login() {
 
   return (
     <div className="login-page">
-
-      {/* Hero */}
       <section className="login-hero">
         <h1>{mode === "login" ? "Welcome Back" : "Create Your Account"}</h1>
         <p>Log in or join DriveLab to manage your appointments easily.</p>
       </section>
 
-      {/* Form Box */}
       <div className="login-box">
 
-        {/* Switch buttons */}
         <div className="login-tabs">
-          <button
-            className={mode === "login" ? "active" : ""}
-            onClick={() => {
-              setMode("login");
-              setMessage("");
-            }}
-          >
+          <button className={mode === "login" ? "active" : ""} onClick={() => { setMode("login"); setMessage(""); }}>
             Login
           </button>
-
-          <button
-            className={mode === "signup" ? "active" : ""}
-            onClick={() => {
-              setMode("signup");
-              setMessage("");
-            }}
-          >
+          <button className={mode === "signup" ? "active" : ""} onClick={() => { setMode("signup"); setMessage(""); }}>
             Sign Up
           </button>
         </div>
 
-        {/* LOGIN FORM */}
         {mode === "login" && (
           <form onSubmit={handleLogin}>
             <label>Email</label>
-            <input
-              type="email"
-              placeholder="Enter your email..."
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+            <input type="email" placeholder="Enter your email..." value={email} onChange={(e) => setEmail(e.target.value)} required />
 
             <label>Password</label>
-            <input
-              type="password"
-              placeholder="Enter your password..."
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <input type="password" placeholder="Enter your password..." value={password} onChange={(e) => setPassword(e.target.value)} required />
 
-            <button className="login-btn" type="submit">
-              Login
-            </button>
+            <button className="login-btn" type="submit">Login</button>
           </form>
         )}
 
-        {/* SIGNUP FORM */}
         {mode === "signup" && (
           <form onSubmit={handleSignup}>
             <label>Full Name</label>
-            <input
-              type="text"
-              placeholder="Your full name..."
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
+            <input type="text" placeholder="Your full name..." value={name} onChange={(e) => setName(e.target.value)} required />
 
             <label>Email</label>
-            <input
-              type="email"
-              placeholder="Email address..."
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+            <input type="email" placeholder="Email address..." value={email} onChange={(e) => setEmail(e.target.value)} required />
 
             <label>Password</label>
-            <input
-              type="password"
-              placeholder="Choose a password..."
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <input type="password" placeholder="Choose a password..." value={password} onChange={(e) => setPassword(e.target.value)} required />
 
             <label>Phone Number</label>
-            <input
-              type="text"
-              placeholder="Your phone number..."
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              required
-            />
+            <input type="text" placeholder="Your phone number..." value={phone} onChange={(e) => setPhone(e.target.value)} required />
 
             <label>Car Model</label>
-            <input
-              type="text"
-              placeholder="Your car model..."
-              value={carModel}
-              onChange={(e) => setCarModel(e.target.value)}
-              required
-            />
+            <input type="text" placeholder="Your car model..." value={carModel} onChange={(e) => setCarModel(e.target.value)} required />
 
-            <button className="login-btn" type="submit">
-              Create Account
-            </button>
+            <button className="login-btn" type="submit">Create Account</button>
           </form>
         )}
 
