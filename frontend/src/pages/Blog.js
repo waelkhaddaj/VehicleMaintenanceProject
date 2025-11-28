@@ -1,7 +1,9 @@
 import "./Blog.css";
 import { Link } from "react-router-dom";
 
-// Safe image paths
+/*
+  like i said in th eother ages thes are the images.....
+*/
 const heroImg = process.env.PUBLIC_URL + "/images/tools.jpg";
 const post1Img = process.env.PUBLIC_URL + "/images/worried.png";
 const post2Img = process.env.PUBLIC_URL + "/images/regularmaintenance_1024x768.jpg";
@@ -11,7 +13,10 @@ export default function Blog() {
   return (
     <div>
 
-      {/* HERO SECTION */}
+      {/*
+        Hero section
+        like the pther pages we have a fixed background image you can see it in css file
+      */}
       <section
         className="blog-hero"
         style={{
@@ -30,11 +35,19 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* BLOG FEED */}
+      {/*
+        Blog feed section 
+
+          Here we display the blog posts in a vertical list.
+
+          Each post is an <article> with an image and a text sectio andd
+          the layout(side-by-side design,hover effect,reverse layout....)
+          is all  controlled by the Blog.css file
+      */}
       <section className="blog-feed">
         <h2>Latest Insights</h2>
 
-        {/* POST 1 */}
+      
         <article className="blog-post">
           <img src={post1Img} alt="Warning Signs" />
 
@@ -51,7 +64,7 @@ export default function Blog() {
           </div>
         </article>
 
-        {/* POST 2 */}
+   
         <article className="blog-post reverse">
           <img src={post2Img} alt="Maintenance Tips" />
 
@@ -68,7 +81,7 @@ export default function Blog() {
           </div>
         </article>
 
-        {/* POST 3 */}
+   
         <article className="blog-post">
           <img src={post3Img} alt="Tire Tips" />
 
@@ -87,7 +100,10 @@ export default function Blog() {
 
       </section>
 
-      {/* FOOTER */}
+      {/*
+        Footer
+        Same footer used across all pages
+      */}
       <footer>
         <p>&copy; 2025 DriveLab. All rights reserved.</p>
       </footer>

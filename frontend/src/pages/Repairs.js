@@ -1,7 +1,11 @@
 import "./Repairs.css";
 
 export default function Repairs() {
-  // define safe public URLs for all images
+
+  /*
+    like the first 2 pages these are the images we will use
+
+  */
   const heroImg = process.env.PUBLIC_URL + "/images/regularmaintenance_1024x768.jpg";
   const diagImg = process.env.PUBLIC_URL + "/images/checkingthecarphtoto.png";
   const beforeImg = process.env.PUBLIC_URL + "/images/before.png";
@@ -11,7 +15,14 @@ export default function Repairs() {
   return (
     <div>
 
-      {/* REPAIR HERO BANNER */}
+      {/*
+        fixed background photo 
+
+        here in React we still create the parallax effect using CSS 
+      (background-attachment: fixed)but we set the background image itself through inline CSS.
+      
+      the linear-gradient is added here to give a dark overlay on top of the image
+      */}
       <section
         className="repair-hero"
         style={{
@@ -25,10 +36,20 @@ export default function Repairs() {
         <p>Your trusted partner for complete vehicle care.</p>
       </section>
 
-      {/* MAIN REPAIR SECTION */}
+      {/*
+      
+      Main repair section 
+
+        Nothing special here, but note that the image always has a glowing yellow border
+    
+        and when we hover over it,the image lifts slightly upward;this effect is handled
+        all of it in the CSS file (using transform and box-shadow).
+
+      */}
       <section className="repair-section">
         <div className="text">
           <h2>Advanced Diagnostic Expertise</h2>
+
           <p>
             We identify issues quickly using the latest diagnostic tools and certified
             techniques. Whether it's the engine, brakes, or electrical systems — your
@@ -41,6 +62,7 @@ export default function Repairs() {
             <li>✓ Electrical System Diagnostics</li>
             <li>✓ Computerized Testing</li>
           </ul>
+
         </div>
 
         <div className="image-container">
@@ -48,7 +70,16 @@ export default function Repairs() {
         </div>
       </section>
 
-      {/* OUR REPAIR PROCESS (NEW SECTION) */}
+      {/*
+        reapair process
+        its has same glowing and growing feature when you hover
+        
+
+        IMPORTANT note: from this section you start
+         seeing  a backfround image that is fixed 
+   adn has the parallex vibe but you wont find it
+    anywhere here in this code becasue it is in the css file you can find it there
+      */}
       <section className="precision">
         <h2>Our Repair Process</h2>
         <p>Every vehicle gets a structured 4-step repair workflow — built for precision and transparency.</p>
@@ -76,10 +107,20 @@ export default function Repairs() {
         </div>
       </section>
 
-      {/* BEFORE / AFTER SECTION (UPDATED) */}
+      {/*
+        Before and after section
+
+        This section allows the user to see the "before" image and when hovering, it swaps to the "after"image.
+
+        in the old website:
+        This was originally done in JS using image swapping.
+
+        here in react version:
+        We handle the hover swap using onMouseEnter + onMouseLeave.
+      */}
       <section className="before-after">
         <h2>Before & After</h2>
-        <p>See the difference our expert technicians make.</p>
+        <p>See the difference DriveLab precision makes — results that speak for themselves.</p>
 
         <div className="before-after-images">
           <img
@@ -93,7 +134,11 @@ export default function Repairs() {
         </div>
       </section>
 
-      {/* PRECISION PARALLAX */}
+      {/*
+        parallax abckgrounf here also
+
+        handeled in css
+      */}
       <section
         className="precision parallax"
         style={{
@@ -102,11 +147,14 @@ export default function Repairs() {
       >
         <h2>Our Guarantee</h2>
         <p>
-         Your satisfaction drives us — every repair is backed by our 100% workmanship warranty.
+          Your satisfaction drives us — every repair is backed by our 100% workmanship warranty.
         </p>
       </section>
 
-      {/* FOOTER */}
+      {/*
+        Footer
+        Same footer used on all pages
+      */}
       <footer>
         <p>&copy; 2025 DriveLab. All rights reserved.</p>
       </footer>

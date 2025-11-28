@@ -1,6 +1,11 @@
 import "./Home.css";
 import { Link } from "react-router-dom";
 
+/*
+  These are the images used for the sections we will uise in this page
+
+  note :we are using process.env.PUBLIC_URL so the images load correctly after deploymentt
+*/
 const heroBg = process.env.PUBLIC_URL + "/images/garagepicforhome.jpg";
 const precisionBg = process.env.PUBLIC_URL + "/images/precision-bg.jpg";
 const engineImg = process.env.PUBLIC_URL + "/images/engine.jpg";
@@ -10,7 +15,9 @@ const toolsImg = process.env.PUBLIC_URL + "/images/tools.jpg";
 export default function Home() {
   return (
     <div>
-      {/* HERO SECTION */}
+      {/* 
+        hero section
+      */}
       <section
         className="hero"
         style={{
@@ -20,18 +27,25 @@ export default function Home() {
         <div className="hero-content">
           <p className="tagline">— PREMIUM</p>
           <h1>Vehicle Repair</h1>
+
           <p className="subtitle">
             Professional service for every car and every customer.
           </p>
+
           <p>
             Experience premium auto care—comfort, clarity, and affordability—perfect
             for routine maintenance, diagnostics, or urgent repair work.
           </p>
 
+          {/* you see here the buttons:View services + Book now 
+              i use <Link> instead of <a> because noew we use react Router */}
           <div className="hero-buttons">
             <Link to="/services" className="btn yellow">
               View Services
             </Link>
+
+            {/* when clicked this button will tkae the user to the booking  page 
+            adn when the view services is clicked it take the user to the sevices page*/}
             <Link to="/book" className="btn outline">
               Book Now
             </Link>
@@ -39,65 +53,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BOOKING FORM */}
-      <section className="booking">
-        <form
-          onSubmit={async (e) => {
-            e.preventDefault();
 
-            const formData = new FormData(e.target);
-            const serviceType = formData.get("serviceType");
-            const location = formData.get("location");
-            const date = formData.get("date");
+      {/* 
+        Why Choose Us(honestly nothing special here just a section for the why choose us and inside ti div's then inside the features div
+   there is the div class for every box i put and so on) -->
 
-            try {
-              const res = await fetch("http://localhost:3001/api/book", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  service_type: serviceType,
-                  location,
-                  date,
-                  user_id: 1, // temp user
-                }),
-              });
-
-              const data = await res.json();
-
-              if (!res.ok) {
-                alert(data.error || "Booking failed");
-              } else {
-                alert(data.message || "Appointment booked!");
-                e.target.reset();
-              }
-            } catch (err) {
-              console.error(err);
-              alert("Network error while booking. Is backend running?");
-            }
-          }}
-        >
-          <select name="serviceType" required>
-            <option value="">Choose Service Type</option>
-            <option value="oil">Oil Change</option>
-            <option value="brakes">Brake Check</option>
-            <option value="engine">Engine Diagnostic</option>
-          </select>
-
-          <input
-            name="location"
-            type="text"
-            placeholder="Drop-off Location"
-            required
-          />
-          <input name="date" type="date" required />
-
-          <button type="submit" className="btn yellow">
-            Find Slot
-          </button>
-        </form>
-      </section>
-
-      {/* WHY CHOOSE US */}
+   <!--Very important note here if you hover overany of the boxes it grows a little bit and you see like a light on the borders of it
+   this is done with css(on hover it moves the card 5 pixels upward using transform;and added a box shadow using box-shadow
+      */}
       <section className="why-choose-us">
         <div className="container">
           <h2>Why Choose Us</h2>
@@ -127,7 +90,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRECISION SECTION */}
+      {/* 
+        here you're scrolling and you arrive to this section 
+        you will startr s eeing and image in the backgriund
+   that is fixed and when you scroll yousee more of it ,
+   this is parallax image with a dark overlay done in css with the help of my friend chatgpt
+      */}
       <section
         className="precision"
         style={{
@@ -138,7 +106,9 @@ export default function Home() {
         <p>DriveLab delivers expert repairs with cutting-edge tools.</p>
       </section>
 
-      {/* BLOG */}
+      {/* 
+        here also nothing special only a box that contains an image and under it a text ,but it is a nice design
+      */}
       <section className="blog">
         <div className="container">
           <h2>Our Blog</h2>
@@ -163,7 +133,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
+      {/* Footer */}
       <footer>
         <p>&copy; 2025 DriveLab. All rights reserved.</p>
       </footer>

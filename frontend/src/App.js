@@ -1,3 +1,7 @@
+
+// This file controls all the pages navigation in the website
+
+
 import Repairs from "./pages/Repairs";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -10,10 +14,13 @@ import Blog from "./pages/Blog";
 import BookAppointment from "./pages/BookAppointment";
 import MyAppointments from "./pages/MyAppointments";
 
-import BackToTop from "./components/BackToTop"; // ⭐ ADD THIS IMPORT
+import BackToTop from "./components/BackToTop"; // Shows a button that takes the user back to the top of the page
+
 
 function App() {
   return (
+    // React Router: loads pages without reloading the whole site
+
     <Router>
       <Navbar />
 
@@ -29,7 +36,9 @@ function App() {
         <Route path="/my-appointments" element={<MyAppointments />} />
       </Routes>
 
-      <BackToTop /> {/* ⭐ ADD THIS COMPONENT HERE */}
+
+      {/* Backk to top button(visible on all pagses) */}
+      <BackToTop /> 
     </Router>
   );
 }
