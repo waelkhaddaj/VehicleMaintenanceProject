@@ -3,10 +3,10 @@ import { Link, NavLink } from "react-router-dom";
 
 export default function Navbar() {
 
-  // 👉 Get logged in user
+  // Check if a user is logged in
   const userName = localStorage.getItem("userName");
 
-  // 👉 Logout function
+  // Simple logout by clearing storage and redirect to login page
   const handleLogout = () => {
     localStorage.clear();
     window.location.href = "/login";
@@ -15,32 +15,32 @@ export default function Navbar() {
   return (
     <nav className="navbar">
 
-      {/* LOGO */}
+      {/* Website Logo */}
       <div className="logo">
         Drive<span>Lab</span>
       </div>
 
-      {/* MAIN NAV LINKS */}
+      {/* Main navigation linkss(React Router switches pages without reload) */}
       <ul className="nav-links">
         <li><NavLink to="/" end>Home</NavLink></li>
         <li><NavLink to="/services">Services</NavLink></li>
         <li><NavLink to="/repairs">Repairs</NavLink></li>
         <li><NavLink to="/blog">Blog</NavLink></li>
         <li><NavLink to="/contact">Contact</NavLink></li>
-
         <li><NavLink to="/book">Book</NavLink></li>
         <li><NavLink to="/my-appointments">My Appointments</NavLink></li>
       </ul>
 
-      {/* RIGHT SIDE (HELP + ICON) */}
+      {/* Right side("Need help?" text and  login/logout)*/}
       <div className="right-side">
 
+      
         <div className="contact-info">
           <p>Need help?</p>
           <strong>+961 76 172 015</strong>
         </div>
 
-        {/* 👉 IF NOT LOGGED IN → show login icon */}
+        {/*If user is not logged in then show login i con */}
         {!userName && (
           <NavLink to="/login" className="login-icon">
             <img
@@ -50,7 +50,7 @@ export default function Navbar() {
           </NavLink>
         )}
 
-        {/* 👉 IF LOGGED IN → show: "Welcome NAME" + Logout button */}
+        {/*if user is logged in then show welcome and the name +logout button */}
         {userName && (
           <div className="nav-user-area">
             <span className="welcome-text">Welcome, {userName}</span>

@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 
 export default function BackToTop() {
+  // at first it is false so not visible
   const [visible, setVisible] = useState(false);
 
-  // Show/hide button on scroll
+  // When the user scrolls down the page set visible true it becomes visible
   useEffect(() => {
     const handleScroll = () => {
+      // if the user scrolled more than 300px ==show button
       if (window.scrollY > 300) {
         setVisible(true);
       } else {
@@ -15,11 +17,10 @@ export default function BackToTop() {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll to top smoothly
+// scroll the page back to the top in a smooth way when we click the button
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -31,18 +32,17 @@ export default function BackToTop() {
     <button
       onClick={scrollToTop}
       style={{
-        position: "fixed",
-        bottom: "20px",
-        right: "20px",
+        position: "fixed",    
+        bottom: "20px",       
+        right: "20px",            
         padding: "15px 20px",
         backgroundColor: "yellow",
         color: "black",
         border: "none",
         borderRadius: "5px",
         cursor: "pointer",
-        display: visible ? "block" : "none",
-        zIndex: 9999,
-
+        display: visible ? "block" : "none", 
+        zIndex: 9999,           
       }}
     >
       ↑
