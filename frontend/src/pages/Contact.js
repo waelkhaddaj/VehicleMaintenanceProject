@@ -1,4 +1,5 @@
 import "./Contact.css";
+import { API_URL } from "../config";
 
 export default function Contact() {
   // Background image used in the hero section
@@ -36,17 +37,14 @@ export default function Contact() {
         
           Contact section
 
-          This section is rewritten in react by using js elements instead of plain HTML like the olld website
+          This section is rewritten in react by using js elements instead of HTML like the olld website
 
-          The layout stays the same but now we have=
+          Everything stays the same but now we have=
 
-          - The left side is built using <div className="contact-info-box"> for the info + map.
-
-          - The right side uses <div className="contact-form-box"> and a react form.
-
-          - Form submission is handled with  async function inside onSubmit
-
-          - The Google Maps iframe is kept exactly the same, just placed inside js.
+          -The left side is built using <div className="contact-info-box"> for the info +map.
+          -The right side uses <div className="contact-form-box"> and a react form
+          -Form submission is handled with  async function inside onSubmit
+          -The Google Maps iframe is kept exactly the same, just placed inside js.
 
           So the structure is the same as the old HTML,but written in js and using react form logic.
 
@@ -98,11 +96,10 @@ export default function Contact() {
                 try {
                   // Sending contact info to backend API
                   const res = await fetch(`${API_URL}/api/contact`, {
-                   method: "POST",
-                   headers: { "Content-Type": "application/json" },
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ name, email, message }),
-                    });
-
+                  });
 
                   const data = await res.json();
 
@@ -131,7 +128,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* FOOTER */}
+      {/* Footer*/}
       <footer>
         <p>&copy; 2025 DriveLab. All rights reserved.</p>
       </footer>
