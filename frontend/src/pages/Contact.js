@@ -97,11 +97,12 @@ export default function Contact() {
 
                 try {
                   // Sending contact info to backend API
-                  const res = await fetch("http://localhost:3001/api/contact", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
+                  const res = await fetch(`${API_URL}/api/contact`, {
+                   method: "POST",
+                   headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ name, email, message }),
-                  });
+                    });
+
 
                   const data = await res.json();
 
